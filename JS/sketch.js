@@ -4,7 +4,6 @@ var sunflowers = [];
 
 function setup(){
   
-  // Set the stage - the canvas.
   createCanvas(1350,600);
 
   sunflowerImage = loadImage("Pictures/sunflower.jpg")
