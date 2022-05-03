@@ -1,13 +1,17 @@
 var wallet = 20;
 var plants = []
+var projectiles = []
+canvasWidth = 1350;
 
-function setup(){
-  
-  createCanvas(1350,600);
+function setup()
+{
+  createCanvas(canvasWidth,600);
   sunflowerImage = loadImage("Pictures/sunflower.jpg");
-  sunflowerImage.resize(50,100);
   peashooterImage = loadImage("Pictures/peashooter.jpg")  
+  peaImage = loadImage("Pictures/pea.png")  
   setInterval(UpdateWallet, 1000);
+  setInterval(Attack, 3100);
+  setInterval(cleanProjectiles,500);
 }
 
 function UpdateWallet()
@@ -16,6 +20,28 @@ function UpdateWallet()
     plants[i].spawn();
   }
 }
+
+function Attack()
+{
+  for(let i = 0; i < (plants.length); i++) {
+      plants[i].Attack(); // Attack
+  }
+}
+
+function cleanProjectiles()
+{
+  count = projectiles.length;
+  for(let i = 0; i < (count); i++) 
+  {
+    if (projectiles[i].x > canvasWidth - 300)
+    {
+      projectiles.splice(i,1);
+      count--;
+      i--;
+    }
+  }
+}
+
 
 function draw(){
 
@@ -26,6 +52,9 @@ function draw(){
 
   for(let i = 0; i < (plants.length); i++) {
     plants[i].display();
+  }
+  for(let i = 0; i < (projectiles.length); i++) {
+    projectiles[i].display();
   }
   // Draws the sprites after all the logic has taken place.
   drawSprites();
@@ -46,6 +75,7 @@ class SunFlowerPlant {
   spawn(){
     wallet += 1;
   }
+  Attack(){}
 }
 
 class PeaShooterPlant {
@@ -54,13 +84,27 @@ class PeaShooterPlant {
     this.width = width;
     this.x = mouseX;
     this.y = mouseY;
-    this.cost = 30;
+    this.cost = 10;
   }
   display(){
     fill(255);
     image(peashooterImage, this.x, this.y);
   }
-  spawn(){
+  Attack(){
+    newthing = new Pea(this.x + this.height,this.y + this.width);
+      let justappend = append(projectiles, newthing);
+  }
+  spawn(){  }
+}
+class Pea{
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+  display(){
+    fill(255);
+    image(peaImage, this.x, this.y);
+    this.x = this.x + 5;
   }
 }
 
