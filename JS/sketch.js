@@ -1,14 +1,18 @@
 var wallet = 0;
-var sunflowers = [];
 
+var plants = []
 
 function setup(){
   
   createCanvas(1350,600);
+  setInterval(UpdateWallet, 1000);
+}
 
-  sunflowerImage = loadImage("Pictures/sunflower.jpg")
-  
-  newthing = new SunFlower(10,10,100,100);
+function UpdateWallet()
+{
+  for(let i = 0; i < (plants.length); i++) {
+    plants[i].spawn();
+  }
 }
 
 function draw(){
@@ -19,16 +23,15 @@ function draw(){
   textSize(20);
   text(wallet, 200, 100);
 
-  for(let i = 0; i < (sunflowers.length); i++) {
-    sunflowers[i].display();
-    sunflowers[i].spawn();
+  for(let i = 0; i < (plants.length); i++) {
+    plants[i].display();
   }
 
   // Draws the sprites after all the logic has taken place.
   drawSprites();
 }
 
-class SunFlower {
+class SunFlowerPlant {
   constructor(height, width) {
     this.height = height;
     this.width = width;
@@ -49,7 +52,7 @@ class SunFlower {
 function keyPressed() {
   if(keyCode == 32){
     console.log("yikes")
-    newthing = new SunFlower(10,10,100,100);
-    let justappend = append(sunflowers, newthing);
+    newthing = new SunFlowerPlant(10,10,100,100);
+    let justappend = append(plants, newthing);
   }
 }
