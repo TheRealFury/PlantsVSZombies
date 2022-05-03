@@ -115,7 +115,7 @@ function keyPressed()
   if(keyCode == 50){
     console.log("pea shooter")
     newthing = new PeaShooterPlant(1,1);
-  }
+  } 
 
   if (wallet >= newthing.cost)
   {
