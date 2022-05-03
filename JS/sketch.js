@@ -10,7 +10,7 @@ function setup()
   peashooterImage = loadImage("Pictures/peashooter.jpg")  
   peaImage = loadImage("Pictures/pea.png")  
   setInterval(UpdateWallet, 1000);
-  setInterval(Attack, 3100);
+  setInterval(Attack, 1500);
   setInterval(cleanProjectiles,500);
 }
 
@@ -28,7 +28,7 @@ function Attack()
   }
 }
 
-function cleanProjectiles()
+function cleanProjectiles() // clear the projectiles from the memory which are near the boudary
 {
   count = projectiles.length;
   for(let i = 0; i < (count); i++) 
@@ -44,7 +44,6 @@ function cleanProjectiles()
 
 
 function draw(){
-
   // The background colour.
   background(0);
   textSize(20);
@@ -56,7 +55,6 @@ function draw(){
   for(let i = 0; i < (projectiles.length); i++) {
     projectiles[i].display();
   }
-  // Draws the sprites after all the logic has taken place.
   drawSprites();
 }
 
@@ -69,7 +67,7 @@ class SunFlowerPlant {
     this.cost = 10;
   }
   display(){
-    fill(255);
+    fill(0);
     image(sunflowerImage, this.x, this.y);
   }
   spawn(){
@@ -91,7 +89,7 @@ class PeaShooterPlant {
     image(peashooterImage, this.x, this.y);
   }
   Attack(){
-    newthing = new Pea(this.x + this.height,this.y + this.width);
+    newthing = new Pea(this.x + 100,this.y + 10);
       let justappend = append(projectiles, newthing);
   }
   spawn(){  }
