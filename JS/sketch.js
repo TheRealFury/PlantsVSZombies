@@ -8,7 +8,6 @@ function setup(){
   sunflowerImage.resize(50,100);
   peashooterImage = loadImage("Pictures/peashooter.jpg")  
   setInterval(UpdateWallet, 1000);
-  message = createP('msg');
 }
 
 function UpdateWallet()
