@@ -7,7 +7,7 @@ function setup(){
   // Set the stage - the canvas.
   createCanvas(1350,600);
 
-  sunflowerImage = loadImage("Pictures/sunflower.jpg")
+  sunflowerImage = loadImage("Pictures/sunflower.png")
   
   newthing = new SunFlower(10,10,100,100);
 }
