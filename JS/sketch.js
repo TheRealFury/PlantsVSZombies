@@ -18,10 +18,16 @@ function draw(){
   background(0);
 
   textSize(20);
-  text(wallet, 50, 100);
+  text(wallet, 50, 30);
+  text("1", 85, 155);
+  text("2", 85, 265);
+  text("3", 85, 375);
+  text("4", 85, 485);
+  text("5", 85, 595);
   drawLines();
   SunflowerFunctions(); 
   PeashooterFunctions();
+  displayPlants();
 
   // Draws the sprites after all the logic has taken place.
   drawSprites();
@@ -39,7 +45,14 @@ function PeashooterFunctions(){
   }
 }
 
+function displayPlants(){
+  image(sunflowerImage, 15, 65);
+  image(peashooterImage, 10, 170)
+}
+
 function drawLines(){
+
+  // Grid Lines//
   // Vertical Lines
   rect(150, 10, 10, 600);
   rect(250, 10, 10, 600);
@@ -57,7 +70,18 @@ function drawLines(){
   rect(150, 370, 710, 10);
   rect(150, 490, 710, 10);
   rect(150, 610, 710, 10);
+  //
 
+  // Display Lines//
+  rect(0, 50, 10, 560);
+  rect(100, 50, 10, 560);
+  rect(10, 50, 90, 10);
+  rect(10, 160, 90, 10);
+  rect(10, 270, 90, 10);
+  rect(10, 380, 90, 10);
+  rect(10, 490, 90, 10);
+  rect(10, 600, 90, 10);
+  //
 }
 
 class SunFlower {
